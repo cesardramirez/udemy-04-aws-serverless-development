@@ -29,5 +29,17 @@ aws iam list-policies
 # List all policies created by you in the account
 aws iam list-policies --scope Local
 
+# Lists all policies associated with a user
+aws iam list-attached-user-policies --user-name cramirezd
+
+# Enables console access for a user
+aws iam create-login-profile --user-name cramirezd --password '<value>' --password-reset-required
+
+# Verify if the user has access to the console
+aws iam get-login-profile --user-name cramirezd
+
+# Disable console access for a user
+aws iam delete-login-profile --user-name cramirezd
+
 # Run sh file
 # bash solution_1.sh
