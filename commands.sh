@@ -41,5 +41,14 @@ aws iam get-login-profile --user-name cramirezd
 # Disable console access for a user
 aws iam delete-login-profile --user-name cramirezd
 
+# List of all stacks
+aws cloudformation list-stacks
+
+# Create a stack using a JSON file
+aws cloudformation create-stack --stack-name StackIAMUsuarioJSON --template-body file://iam-basic-user.json --capabilities CAPABILITY_NAMED_IAM
+
+# Create a stack using a YAML file
+aws cloudformation create-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
+
 # Run sh file
 # bash solution_1.sh
