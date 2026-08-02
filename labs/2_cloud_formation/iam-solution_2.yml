@@ -1,21 +1,33 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Metadata:
   Author: cesardramirez
-  Descriotion: Laboratorio 2
+  Description: Laboratorio 2
   Version: '1.0'
 Resources:
-  GroupIAM:
-    Type: AWS::IAM::Group
-    Properties:
-      GroupName: vengadores
-  UserIAM:
+  GrootUser:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: groot
       Groups:
-        - !Ref GroupIAM
+        - !Ref VengadoresGroup
       Tags:
         - Key: Guardian
           Value: Galaxia
         - Key: Tipo
           Value: Flora Coloso
+  VengadoresGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: vengadores
+  ListBucketsCustomPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: S3ListBucketsOnly
+      Groups:
+        - !Ref VengadoresGroup
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: s3:ListAllMyBuckets
+            Resource: "*"

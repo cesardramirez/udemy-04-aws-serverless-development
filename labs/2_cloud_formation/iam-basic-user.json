@@ -2,7 +2,7 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Metadata": {
     "Author": "cesardramirez",
-    "Descriotion": "Plantilla básica con recurso IAM",
+    "Description": "Plantilla básica con recurso IAM",
     "Version": "1.0"
   },
   "Resources": {

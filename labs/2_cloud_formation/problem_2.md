@@ -12,7 +12,7 @@ Crear y gestionar recursos de AWS IAM usando exclusivamente plantillas de CloudF
 
 - Crea una plantilla YAML sencilla para generar un usuario IAM llamado `groot`.
 - Bonus: Añadir etiquetas (tags) como `Guardian: Galaxia` o `Tipo: Flora Coloso`.
-- Verifica la creación del usuario desde AWS CLI (`aws iam get-user --user-name <value>`).
+- Verifica la creación del usuario desde AWS CLI (`aws iam get-user --user-name groot`).
 
 ![iam groot](https://alvaro8317-udemy-courses.s3.us-east-1.amazonaws.com/aws-developer-serverless/images/iam+groot.png)
 
@@ -32,7 +32,7 @@ Crear y gestionar recursos de AWS IAM usando exclusivamente plantillas de CloudF
 
 - Crea una política IAM personalizada que permita únicamente listar buckets de S3 (`s3:ListAllMyBuckets`).
 - Asocia esa política al grupo `Vengadores`.
-- Desde la consola AWS o CLI, verifica que la política esté correctamente adjunta.
+- Desde la consola AWS o CLI, verifica que la política esté correctamente adjunta (`aws iam list-group-policies --group-name vengadores`).
 
 ![great power](https://alvaro8317-udemy-courses.s3.us-east-1.amazonaws.com/aws-developer-serverless/images/great-power.png)
 

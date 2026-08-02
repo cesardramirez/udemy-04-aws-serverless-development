@@ -32,6 +32,13 @@ aws iam list-policies --scope Local
 # Lists all policies associated with a user
 aws iam list-attached-user-policies --user-name cramirezd
 
+# Lists all policies associated with a group
+aws iam list-attached-group-policies --group-name vengadores
+# Inline Policy 
+aws iam list-group-policies --group-name vengadores
+# View the content of an inline policy
+aws iam get-group-policy --group-name vengadores --policy-name S3ListBucketsOnly
+
 # Enables console access for a user
 aws iam create-login-profile --user-name cramirezd --password '<value>' --password-reset-required
 
