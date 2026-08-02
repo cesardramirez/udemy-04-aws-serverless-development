@@ -40,8 +40,8 @@ Crear y gestionar recursos de AWS IAM usando exclusivamente plantillas de CloudF
 
 ### 📌 **Parte 4 - "Snap! Eliminar recursos" (Destruir el Stack)** ✨
 
-- Finalmente, destruye todos los recursos creados mediante CloudFormation con AWS CLI (`aws cloudformation delete-stack`).
-- Verifica desde AWS CLI que los recursos ya no existan.
+- Finalmente, destruye todos los recursos creados mediante CloudFormation con AWS CLI (`aws cloudformation delete-stack --stack-name StackIAMGrootUser`).
+- Verifica desde AWS CLI que los recursos ya no existan (`aws cloudformation describe-stacks --stack-name StackIAMGrootUser`).
 
 ![thanos snap](https://alvaro8317-udemy-courses.s3.us-east-1.amazonaws.com/aws-developer-serverless/images/thanos+cloudformation.png)
 
@@ -52,6 +52,6 @@ Crear y gestionar recursos de AWS IAM usando exclusivamente plantillas de CloudF
 - [x] Crear usuario IAM con tags personalizados.
 - [x] Crear grupo IAM y asociar usuario.
 - [x] Crear política IAM personalizada y asociarla al grupo.
-- [ ] Eliminar todo el stack y confirmar que se eliminaron los recursos.
+- [x] Eliminar todo el stack y confirmar que se eliminaron los recursos.
 
 ---

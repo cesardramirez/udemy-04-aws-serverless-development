@@ -63,5 +63,11 @@ aws cloudformation create-stack --stack-name StackIAMUsuarioJSON --template-body
 # Create a stack using a YAML file
 aws cloudformation create-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
 
+# Delete a stack
+aws cloudformation delete-stack --stack-name StackIAMGrootUser
+
+# get a stack
+aws cloudformation describe-stacks --stack-name StackIAMGrootUser
+
 # Run sh file
 # bash solution_1.sh
