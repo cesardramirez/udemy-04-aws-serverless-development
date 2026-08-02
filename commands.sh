@@ -51,7 +51,10 @@ aws cloudformation create-stack --stack-name StackIAMUsuarioJSON --template-body
 aws cloudformation create-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
 
 # Get the current user's data
-aws iam get-user
+aws iam get-user --user-name groot
+
+# Get the group with in the name
+aws iam get-group --group-name vengadores
 
 # Run sh file
 # bash solution_1.sh

@@ -4,10 +4,16 @@ Metadata:
   Descriotion: Laboratorio 2
   Version: '1.0'
 Resources:
+  GroupIAM:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: vengadores
   UserIAM:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: groot
+      Groups:
+        - !Ref GroupIAM
       Tags:
         - Key: Guardian
           Value: Galaxia
