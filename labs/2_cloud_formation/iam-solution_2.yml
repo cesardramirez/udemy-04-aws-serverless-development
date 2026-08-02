@@ -8,8 +8,8 @@ Resources:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: groot
-    Tags:
-      - Key: Guardian
-        Value: Galaxia
-      - Key: Tipo
-        Value: Flora Coloso
+      Tags:
+        - Key: Guardian
+          Value: Galaxia
+        - Key: Tipo
+          Value: Flora Coloso
