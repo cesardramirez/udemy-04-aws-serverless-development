@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  Author: cesardramirez
+  Descriotion: Laboratorio 2
+  Version: '1.0'
+Resources:
+  UserIAM:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: groot
+    Tags:
+      - Key: Guardian
+        Value: Galaxia
+      - Key: Tipo
+        Value: Flora Coloso
