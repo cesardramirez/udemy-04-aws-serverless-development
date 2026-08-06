@@ -34,8 +34,10 @@ aws iam list-attached-user-policies --user-name cramirezd
 
 # Lists all policies associated with a group
 aws iam list-attached-group-policies --group-name vengadores
+
 # Inline Policy 
 aws iam list-group-policies --group-name vengadores
+
 # View the content of an inline policy
 aws iam get-group-policy --group-name vengadores --policy-name S3ListBucketsOnly
 
@@ -51,8 +53,11 @@ aws iam delete-login-profile --user-name cramirezd
 # Get the current user's data
 aws iam get-user --user-name groot
 
-# Get the group with in the name
+# Get the group by its name
 aws iam get-group --group-name vengadores
+
+# Get the role by its name
+aws iam get-role --role-name lambda-rol-with-cli
 
 # List of all stacks
 aws cloudformation list-stacks
@@ -66,11 +71,28 @@ aws cloudformation create-stack --stack-name StackIAMUsuarioYAML --template-body
 # Updates an existing stack using a YAML file
 aws cloudformation update-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
 
-# Delete a stack
+# Remove a stack
 aws cloudformation delete-stack --stack-name StackIAMGrootUser
 
-# get a stack
+# Get a stack
 aws cloudformation describe-stacks --stack-name StackIAMGrootUser
+
+# Create a role for a lambda function
+aws iam create-role \
+  --role-name lambda-rol-with-cli \
+  --assume-role-policy-document file://labs/3_lambda/trust-policy.json
+
+# Create lambda function
+aws lambda create-function \
+  --function-name my-first-function-python-with-cli \
+  --runtime python3.15 \
+  --handler code.lambda_handler \
+  --zip-file fileb://labs/3_lambda/code.zip \
+  --role arn:aws:iam::583594224103:role/lambda-rol-with-cli
+
+# Remove a lambda function
+aws lambda delete-function \
+  --function-name my-first-function-python-with-cli
 
 # Run sh file
 # bash solution_1.sh
