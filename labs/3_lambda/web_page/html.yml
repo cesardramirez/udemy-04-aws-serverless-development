@@ -4,7 +4,19 @@ Metadata:
   Description: Plantilla básica que retorna una web html
   Version: '1.0'
 Resources:
-  MyLambdaFunction:
+  LambdaFunctionPermission:  # Dar permiso para el acceso público (sin autenticación).
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref LambdaFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: "*"
+      FunctionUrlAuthType: NONE
+  MyPublicUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      AuthType: NONE
+      TargetFunctionArn: !GetAtt LambdaFunction.Arn
+  LambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: my-first-function-python-html

@@ -6,3 +6,8 @@ aws cloudformation create-stack \
   --stack-name StackHtmlLambda \
   --template-body file://labs/3_lambda/web_page/html.yml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_IAM
+
+aws cloudformation update-stack \
+  --stack-name StackHtmlLambda \
+  --template-body file://labs/3_lambda/web_page/html.yml \
+  --capabilities CAPABILITY_NAMED_IAM CAPABILITY_IAM
