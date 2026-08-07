@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  Author: cesardramirez
+  Description: Plantilla básica que retorna una web html
+  Version: '1.0'
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: my-first-function-python-html
+      Description: "Esta lambda se desarrolla para mostrar el uso de HTML con AWS Lambda"
+      Runtime: python3.15
+      Handler: main.handler
+      Code:
+        S3Bucket: cesardramirez-course-us-east-1
+        S3Key: web_page/function-html.zip  # Se genera seleccionando el zip únicamente main.py e index.html.
+      Timeout: 10
+      MemorySize: 128
+      Role: !GetAtt RoleFunction.Arn
+  RoleFunction:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: html-role-with-cloudformation  # El rol debe ser único por stack.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole  # Proporciona permisos de escritura de logs a CloudWatch.

@@ -19,7 +19,7 @@ Resources:
   RoleFunction:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: execution-role-with-cloudformation  # Para evitar el error de capabilities, se elimina este campo (AWS creará uun id único) o se añade al ejecutar el comando el CAPABILITY_NAMED_IAM
+      RoleName: execution-role-with-cloudformation  # Para evitar el error de capabilities, se elimina este campo (AWS creará un id único) o se añade al ejecutar el comando el CAPABILITY_NAMED_IAM
       AssumeRolePolicyDocument:  # Define la política de confianza asociada al rol.
         Version: '2012-10-17'
         Statement:
