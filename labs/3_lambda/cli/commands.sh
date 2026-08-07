@@ -1,4 +1,5 @@
 # Run each command in the project root (file:// without errors)
+#!/bin/bash
 aws iam create-role \
   --role-name lambda-rol-with-cli \
   --assume-role-policy-document file://labs/3_lambda/trust-policy.json

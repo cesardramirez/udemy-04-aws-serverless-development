@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  Author: cesardramirez
+  Description: Plantilla básica para crear un lambda
+  Version: '1.0'
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: my-first-function-python-with-cloudformation
+      Runtime: python3.15
+      Handler: code.lambda_handler
+      Code:
+        S3Bucket: cesardramirez-course-us-east-1  # Valor en aws cloudformation describe-stacks --stack-name StackBucketS3, outputs.outputvalue.
+        S3Key: function.zip
+      Timeout: 10  # Si en 10 segundos no finaliza su ejecución, se finaliza el lambda abruptamente.
+      MemorySize: 128  # Tamaño en MB.
+      Role: !GetAtt RoleFunction.Arn  # !GetAtt, de la referencia obtiene el campo.
+  RoleFunction:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: execution-role-with-cloudformation  # Para evitar el error de capabilities, se elimina este campo (AWS creará uun id único) o se añade al ejecutar el comando el CAPABILITY_NAMED_IAM
+      AssumeRolePolicyDocument:  # Define la política de confianza asociada al rol.
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:  # Listado de ARN de las políticas a adjuntar al rol.
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole  # Proporciona permisos de escritura de logs a CloudWatch.

@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  Author: cesardramirez
+  Description: Plantilla básica con recurso Bucket S3
+  Version: '1.0'
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "cesardramirez-course-${AWS::Region}"  # !Sub, sustituye un valor por otro, en este caso, un parámetro que trae AWS.
+Outputs:
+  MyBucketName:
+    Description: "Nombre final del bucket s3 después de reemplazos"
+    Value: !Ref MyBucket

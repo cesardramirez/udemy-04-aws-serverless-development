@@ -62,20 +62,27 @@ aws iam get-role --role-name lambda-rol-with-cli
 # List of all stacks
 aws cloudformation list-stacks
 
-# Create a stack using a JSON file
+# Create an IAM stack using a JSON file
 aws cloudformation create-stack --stack-name StackIAMUsuarioJSON --template-body file://iam-basic-user.json --capabilities CAPABILITY_NAMED_IAM
 
-# Create a stack using a YAML file
+# Create an IAM stack using a YAML file
 aws cloudformation create-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
 
-# Updates an existing stack using a YAML file
+# Update an existing IAM stack using a YAML file
 aws cloudformation update-stack --stack-name StackIAMUsuarioYAML --template-body file://iam-basic-user.yml --capabilities CAPABILITY_NAMED_IAM
 
-# Remove a stack
+# Create an S3 stack using a YAML file
+aws cloudformation create-stack --stack-name StackBucketS3 --template-body file://s3.yml
+
+# Create an Lambda stack with a Role using a YAML file
+aws cloudformation create-stack --stack-name StackMyFirstLambda --template-body file://lambda.yml --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM
+
+# Remove an IAM stack
 aws cloudformation delete-stack --stack-name StackIAMGrootUser
 
-# Get a stack
+# Get an IAM stack
 aws cloudformation describe-stacks --stack-name StackIAMGrootUser
+aws cloudformation describe-stacks --stack-name StackBucketS3
 
 # Create a role for a lambda function
 aws iam create-role \
@@ -93,6 +100,9 @@ aws lambda create-function \
 # Remove a lambda function
 aws lambda delete-function \
   --function-name my-first-function-python-with-cli
+
+# Copy a file from one directory to another
+aws s3 cp labs/3_lambda/cli/code.zip s3://cesardramirez-course-us-east-1/function.zip
 
 # Run sh file
 # bash solution_1.sh

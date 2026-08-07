@@ -24,7 +24,7 @@ Resources:
     Properties:
       PolicyName: S3ListBucketsOnly
       Groups:
-        - !Ref VengadoresGroup
+        - !Ref VengadoresGroup  # !Ref del Id Lógico
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
