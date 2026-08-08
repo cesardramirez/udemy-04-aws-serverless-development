@@ -101,6 +101,9 @@ aws lambda create-function \
 aws lambda delete-function \
   --function-name my-first-function-python-with-cli
 
+# Check the configuration of an AWS Lambda Function URL
+aws lambda get-function-url-config --function-name my-first-function-python-html
+
 # Copy a file from one directory to another
 aws s3 cp labs/3_lambda/cli/code.zip s3://cesardramirez-course-us-east-1/function.zip
 
