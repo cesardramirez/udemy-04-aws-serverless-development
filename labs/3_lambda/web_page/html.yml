@@ -10,7 +10,7 @@ Resources:
       FunctionName: !Ref LambdaFunction
       Action: lambda:InvokeFunctionUrl  # Permiso específico para invocarla mediante Function URL.
       Principal: "*"
-      FunctionUrlAuthType: NONE
+      FunctionUrlAuthType: AWS_IAM
   LambdaFunctionPermission:  # Dar permiso para el acceso público (sin autenticación).
     Type: AWS::Lambda::Permission
     Properties:
@@ -20,7 +20,7 @@ Resources:
   MyPublicUrl:
     Type: AWS::Lambda::Url
     Properties:
-      AuthType: NONE
+      AuthType: AWS_IAM
       TargetFunctionArn: !GetAtt LambdaFunction.Arn
   LambdaFunction:
     Type: AWS::Lambda::Function

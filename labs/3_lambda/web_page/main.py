@@ -15,6 +15,6 @@ def handler(event: dict[str, Any], context: Any):
   with open("index.html") as archivo_html:  # with: ContextManager. Garantiza que un recurso se abra, se use y se cierre correctamente.
     return {  # Se retorna un diccionario
       "statusCode": 200,
-      "headers": {"Content-Type": "text/html"},
+      "headers": {"Content-Type": "text/html; charset=UTF-8"},  # Adicional por si hay error de tildes.
       "body": archivo_html.read(),
     }
